@@ -42,6 +42,8 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.util.*;
 
+import com.freshplanet.ane.AirFacebook.AirFacebookExtension;
+
 class AuthorizationClient implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final String TAG = "Facebook-AuthorizationClient";
@@ -211,8 +213,8 @@ class AuthorizationClient implements Serializable {
 
         int permissionCheck = checkPermission(Manifest.permission.INTERNET);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-            String errorType = context.getString(R.string.com_facebook_internet_permission_error_title);
-            String errorDescription = context.getString(R.string.com_facebook_internet_permission_error_message);
+            String errorType = context.getString(AirFacebookExtension.getResourceId("string.com_facebook_internet_permission_error_title"));
+            String errorDescription = context.getString(AirFacebookExtension.getResourceId("string.com_facebook_internet_permission_error_message"));
             complete(Result.createErrorResult(pendingRequest, errorType, errorDescription));
 
             return false;
